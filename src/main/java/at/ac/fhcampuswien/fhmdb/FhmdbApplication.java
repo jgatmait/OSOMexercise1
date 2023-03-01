@@ -14,7 +14,7 @@ public class FhmdbApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(FhmdbApplication.class.getResource("home-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 890, 620);
         scene.getStylesheets().add(Objects.requireNonNull(FhmdbApplication.class.getResource("styles.css")).toExternalForm());
-        stage.setTitle("FHMDb");
+        stage.setTitle("OSOMDb");
         stage.setScene(scene);
         stage.show();
     }

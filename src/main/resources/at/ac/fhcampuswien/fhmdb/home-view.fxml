@@ -16,7 +16,7 @@
          <Insets bottom="7.0" left="10.0" top="7.0" />
       </padding>
       <children>
-         <Label style="-fx-background-color: F5C518;" text="FHMDb">
+         <Label style="-fx-background-color: F5C518;" text="OSOMDb">
             <font>
                <Font name="Calibri Bold" size="24.0" />
             </font>
@@ -24,13 +24,13 @@
                <Insets left="2.0" right="2.0" />
             </padding>
          </Label>
-         <Label styleClass="text-white" stylesheets="@styles.css" text="Welcome to FHMDb!" />
+         <Label styleClass="text-white" stylesheets="@styles.css" text="Welcome to OSOMDb!" />
       </children>
    </HBox>
    <HBox spacing="5.0" styleClass="background-black" stylesheets="@styles.css">
       <children>
          <JFXButton fx:id="sortBtn" styleClass="background-yellow" stylesheets="@styles.css" text="Sort (asc)" />
-         <TextField fx:id="searchField" prefHeight="25.0" prefWidth="170.0" promptText="Search FHMDb" />
+         <TextField fx:id="searchField" prefHeight="25.0" prefWidth="170.0" promptText="Search OSOMDb" />
          <JFXComboBox fx:id="genreComboBox" focusColor="#f5c518" styleClass="filter-combo-box" stylesheets="@styles.css" />
          <JFXButton fx:id="searchBtn" styleClass="background-yellow" stylesheets="@styles.css" text="Filter" />
       </children>
