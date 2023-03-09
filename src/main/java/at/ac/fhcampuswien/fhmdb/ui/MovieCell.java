@@ -33,7 +33,7 @@ public class MovieCell extends ListCell<Movie> {
             );
             footnote.setText(
                     movie.getGenre() != null
-                            ? movie.getGenre()
+                            ? movie.getGenre().toString().replace("[","").replace("]", "")
                             : "No genres available"
             );
 
