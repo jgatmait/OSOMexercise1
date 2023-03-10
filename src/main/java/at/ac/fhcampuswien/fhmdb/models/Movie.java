@@ -33,7 +33,7 @@ public class Movie {
 
     public List<Genre> getGenre(){
 
-        System.out.println(this.getTitle() + " " + genres);
+        //System.out.println(this.getTitle() + " " + genres);
         Collections.sort(genres);
 
         return genres;
@@ -42,20 +42,16 @@ public class Movie {
     public static List<Movie> initializeMovies(){
         List<Movie> movies = new ArrayList<>();
         // TODO add some dummy data here
+
         Movie movie1 = new Movie("Cars",
                 "Okay, here we go. Focus. Speed. I am speed.",
                 Arrays.asList(Genre.ANIMATION, Genre.SPORT, Genre.ADVENTURE));
-
-
-        //movie1.getGenre();
 
 
         Movie movie2 = new Movie("Turning Red",
                 "But they don't turn my tummy the way you do. I've never met nobody like you.",
                 Arrays.asList(Genre.ANIMATION, Genre.FAMILY, Genre.FANTASY));
 
-
-        //movie2.getGenre();
 
         Movie movie3  = new Movie("Wakanda Forever",
                 "Does it offer you comfort or torment?",
@@ -125,6 +121,7 @@ public class Movie {
         Movie movie19 = new Movie("Predator",
                 "",
                 Arrays.asList(Genre.HORROR, Genre.SCIENCE_FICTION,Genre.THRILLER));
+
         Movie movie20 = new Movie("Avatar",
                 "",
                 Arrays.asList(Genre.SCIENCE_FICTION, Genre.FANTASY, Genre.ACTION));
@@ -154,5 +151,16 @@ public class Movie {
         movies.add(movie20);
 
         return movies;
+    }
+
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Movie mov){
+            return Objects.equals(this.getTitle(), mov.getTitle()) && Objects.equals(this.getDescription(), mov.getDescription()) && this.getGenre() == mov.getGenre();
+        }else {
+            return false;
+        }
     }
 }

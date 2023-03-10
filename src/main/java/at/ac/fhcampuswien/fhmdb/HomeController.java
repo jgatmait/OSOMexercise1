@@ -13,10 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class HomeController implements Initializable {
     @FXML
@@ -36,9 +33,11 @@ public class HomeController implements Initializable {
 
     public List<Movie> allMovies = Movie.initializeMovies();
 
+
+
     private final ObservableList<Movie> observableMovies = FXCollections.observableArrayList();   // automatically updates corresponding UI elements when underlying data changes
 
-    private List<Genre>genreList = new ArrayList<>(EnumSet.allOf(Genre.class));
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -50,7 +49,7 @@ public class HomeController implements Initializable {
 
         // TODO add genre filter items with genreComboBox.getItems().addAll(...)
         genreComboBox.setPromptText("Filter by Genre");
-        genreComboBox.getItems().addAll(genreList);
+        genreComboBox.getItems().addAll(Genre.values());
 
 
         // TODO add event handlers to buttons and call the regarding methods
@@ -60,13 +59,35 @@ public class HomeController implements Initializable {
         sortBtn.setOnAction(actionEvent -> {
             if(sortBtn.getText().equals("Sort (asc)")) {
                 // TODO sort observableMovies ascending
+                sortMovieList(observableMovies, true);
                 sortBtn.setText("Sort (desc)");
+
             } else {
                 // TODO sort observableMovies descending
                 sortBtn.setText("Sort (asc)");
+                sortMovieList(observableMovies, false);
             }
         });
 
 
+
+
+
     }
+
+    public void sortMovieList(List<Movie> movieList, boolean ascending){
+
+            if (ascending){
+                movieList.sort(Comparator.comparing(Movie::getTitle));
+            }else {
+                movieList.sort(Comparator.comparing(Movie::getTitle).reversed());
+            }
+
+    }
+
+
+
+
+
+
 }
