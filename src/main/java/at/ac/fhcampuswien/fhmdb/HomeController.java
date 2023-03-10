@@ -33,15 +33,16 @@ public class HomeController implements Initializable {
 
     public List<Movie> allMovies = Movie.initializeMovies();
 
+    private final ObservableList<Movie> observableMovies = FXCollections.observableArrayList();
+    // automatically updates corresponding UI elements when underlying data changes
 
-
-    private final ObservableList<Movie> observableMovies = FXCollections.observableArrayList();   // automatically updates corresponding UI elements when underlying data changes
-
-
+   // observableMovies.addAll(allMovies);         // add dummy data to observable list
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         observableMovies.addAll(allMovies);         // add dummy data to observable list
+
+        filterMoviesByGenre(observableMovies, filterGenre);
 
         // initialize UI stuff
         movieListView.setItems(observableMovies);   // set data of observable list to list view
@@ -50,7 +51,6 @@ public class HomeController implements Initializable {
         // TODO add genre filter items with genreComboBox.getItems().addAll(...)
         genreComboBox.setPromptText("Filter by Genre");
         genreComboBox.getItems().addAll(Genre.values());
-
 
         // TODO add event handlers to buttons and call the regarding methods
         // either set event handlers in the fxml file (onAction) or add them here
@@ -68,11 +68,6 @@ public class HomeController implements Initializable {
                 sortMovieList(observableMovies, false);
             }
         });
-
-
-
-
-
     }
 
     public void sortMovieList(List<Movie> movieList, boolean ascending){
@@ -84,10 +79,21 @@ public class HomeController implements Initializable {
             }
 
     }
+    // Genre filterGenre = (Genre) genreComboBox.getValue();
+    Genre filterGenre = Genre.DOCUMENTARY;
 
 
-
-
+    public List<Movie> filterMoviesByGenre(List<Movie> observableMovies, Genre filterGenre){
+        List<Movie> filteredList = new ArrayList<>();
+        for (Movie movie: observableMovies){
+            if (movie.getGenre().contains(filterGenre)){
+                filteredList.add(movie);
+            }
+        }
+        observableMovies.clear();
+        observableMovies.addAll(filteredList);
+        return observableMovies;
+    }
 
 
 }

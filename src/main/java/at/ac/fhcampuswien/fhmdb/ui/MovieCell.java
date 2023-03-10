@@ -29,15 +29,12 @@ public class MovieCell extends ListCell<Movie> {
                     movie.getDescription() != null
                             ? movie.getDescription()
                             : "No description available"
-
             );
             footnote.setText(
                     movie.getGenre() != null
                             ? movie.getGenre().toString().replace("[","").replace("]", "")
                             : "No genres available"
             );
-
-
 
             // color scheme
             title.getStyleClass().add("text-yellow");

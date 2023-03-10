@@ -7,19 +7,13 @@ public class Movie {
     private String description;
 
     // TODO add more properties here
-
     private List<Genre> genres;
-
-
 
 
     public Movie(String title, String description,  List<Genre> genres ){
         this.title = title;
         this.description = description;
         this.genres = genres;
-
-
-
     }
 
     public String getTitle() {
@@ -30,14 +24,15 @@ public class Movie {
         return description;
     }
 
-
     public List<Genre> getGenre(){
-
         //System.out.println(this.getTitle() + " " + genres);
         Collections.sort(genres);
-
         return genres;
     }
+
+   // public void addGenre(Genre g){
+   //     genres.add(g);
+   // } - durch die Lösung aus dem Turorium vom 24.02.23 wurde die methode unnötig
 
     public static List<Movie> initializeMovies(){
         List<Movie> movies = new ArrayList<>();
@@ -45,18 +40,21 @@ public class Movie {
 
         Movie movie1 = new Movie("Cars",
                 "Okay, here we go. Focus. Speed. I am speed.",
+    //           movie1.addGenre(Genre.ACTION);
+    //            movie1.addGenre(Genre.ADVENTURE);
+    //            movie1.addGenre(Genre.COMEDY);
+        //movie1.getGenre();
+     // im Tutorium am 24.02.23 wurde das mit Arrays.asList vorgezeigt und
+     // das wirkt einfacher und hat merhere Vorteile aus, also haben wir das übernommen
                 Arrays.asList(Genre.ANIMATION, Genre.SPORT, Genre.ADVENTURE));
-
 
         Movie movie2 = new Movie("Turning Red",
                 "But they don't turn my tummy the way you do. I've never met nobody like you.",
                 Arrays.asList(Genre.ANIMATION, Genre.FAMILY, Genre.FANTASY));
 
-
         Movie movie3  = new Movie("Wakanda Forever",
                 "Does it offer you comfort or torment?",
                 Arrays.asList(Genre.ACTION, Genre.FANTASY, Genre.DRAMA));
-
 
         Movie movie4 = new Movie("Finding Nemo",
                 "P. Sherman 42, Wallaby Way, Sydney, Australia",
@@ -92,8 +90,7 @@ public class Movie {
 
         Movie movie12 = new Movie("Schindler's List",
                 "Power is when we have every justification to kill, and we don't.",
-                Arrays.asList(Genre.BIOGRAPHY, Genre.DRAMA, Genre.WAR
-                        ));
+                Arrays.asList(Genre.BIOGRAPHY, Genre.DRAMA, Genre.WAR));
 
         Movie movie13 = new Movie("Greatest Showman",
                 "No one ever made a difference by being like everyone else.",
@@ -126,9 +123,7 @@ public class Movie {
                 "",
                 Arrays.asList(Genre.SCIENCE_FICTION, Genre.FANTASY, Genre.ACTION));
 
-
         //movie3.getGenre();
-
         movies.add(movie1);
         movies.add(movie2);
         movies.add(movie3);
@@ -152,8 +147,6 @@ public class Movie {
 
         return movies;
     }
-
-
 
     @Override
     public boolean equals(Object obj) {
