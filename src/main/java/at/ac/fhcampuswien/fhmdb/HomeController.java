@@ -70,7 +70,12 @@ public class HomeController implements Initializable {
         });
 
         searchBtn.setOnAction(actionEvent -> {
-            Genre filterGenre = (Genre) genreComboBox.getValue();
+            Genre filterGenre;
+            if (genreComboBox.getValue()!=null) {
+                filterGenre = (Genre) genreComboBox.getValue();
+            }else {
+                filterGenre=Genre.SHOW_ALL_GENRES;
+            }
             observableMovies.clear();
             observableMovies.addAll(filterMoviesByGenre(allMovies, filterGenre));
         });
@@ -121,6 +126,5 @@ public class HomeController implements Initializable {
         }
         return filteredList;
     }
-
 
 }
