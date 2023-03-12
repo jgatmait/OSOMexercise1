@@ -19,7 +19,6 @@ class MovieTest {
     }
 
     //und dann haben wir die getter und setter getestet :)
-
     @Test
     void get_Title_returns_title() {
 
@@ -29,7 +28,6 @@ class MovieTest {
         String actual= movie1.getTitle();
         assertEquals(expected, actual,"Cannot read title");
     }
-
     @Test
     void getTitle_when_title_empty() {
 
@@ -39,7 +37,6 @@ class MovieTest {
         String actual = movie1.getTitle();
         assertEquals(expected, actual,"Cannot read empty title");
     }
-
     @Test
     void getTitle_when_title_null() {
 
@@ -49,6 +46,7 @@ class MovieTest {
         String actual= movie1.getTitle();
         assertEquals(expected, actual,"Cannot read null title");
     }
+
     @Test
     void getDescription_returns_description() {
 
