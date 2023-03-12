@@ -176,6 +176,91 @@ class HomeControllerTest {
 
         assertEquals(expected, actual,"No selection should show all movies");
     }
+    public void search_for_keyword_in_description() {
+        HomeController hc = new HomeController();
+        List<Movie> movieList = new ArrayList<Movie>();
+
+        Movie movie1 = new Movie("Anastasia", "blah one", Arrays.asList(Genre.DRAMA, Genre.ACTION, Genre.THRILLER));
+        Movie movie2 = new Movie("Dingaling", "blah two", Arrays.asList(Genre.ACTION, Genre.THRILLER));
+        Movie movie3 = new Movie("Zimmbabwe", "blahthree", Arrays.asList(Genre.THRILLER));
+        movieList.addAll(Arrays.asList(movie1, movie2, movie3));
+
+        // Test the searchMovies function with keyword "blah"
+        List<Movie> result = hc.searchMovies(movieList, "lAh ");
+
+        List<Movie> expected = new ArrayList<>();
+        expected.addAll(Arrays.asList(movie1, movie2));
+
+        assertEquals(expected, result, "Search in description does not work");
+    }
+    public void search_for_keyword_in_title() {
+        HomeController hc = new HomeController();
+        List<Movie> movieList = new ArrayList<Movie>();
+
+        Movie movie1 = new Movie("Anastasia", "blah one", Arrays.asList(Genre.DRAMA, Genre.ACTION, Genre.THRILLER));
+        Movie movie2 = new Movie("Dingaling", "blah two", Arrays.asList(Genre.ACTION, Genre.THRILLER));
+        Movie movie3 = new Movie("Zimmbabwesia", "blah three", Arrays.asList(Genre.THRILLER));
+        movieList.addAll(Arrays.asList(movie1, movie2, movie3));
+
+        // Test the searchMovies function with keyword "blah"
+        List<Movie> result = hc.searchMovies(movieList, "Sia");
+
+        List<Movie> expected = new ArrayList<>();
+        expected.addAll(Arrays.asList(movie1, movie3));
+
+        assertEquals(expected, result, "Search in title does not work");
+    }
+    public void search_for_non_existing_keyword() {
+        HomeController hc = new HomeController();
+        List<Movie> movieList = new ArrayList<Movie>();
+
+        Movie movie1 = new Movie("Anastasia", "blah one", Arrays.asList(Genre.DRAMA, Genre.ACTION, Genre.THRILLER));
+        Movie movie2 = new Movie("Dingaling", "blah two", Arrays.asList(Genre.ACTION, Genre.THRILLER));
+        Movie movie3 = new Movie("Zimmbabwe", "blah three", Arrays.asList(Genre.THRILLER));
+        movieList.addAll(Arrays.asList(movie1, movie2, movie3));
+
+        // Test the searchMovies function with keyword "blah"
+        List<Movie> result = hc.searchMovies(movieList, "OSOM");
+
+        List<Movie> expected = new ArrayList<>();
+
+        assertEquals(expected, result, "Search with non existing keyword does not work");
+    }
+    public void search_executed_while_no_keyword_input() {
+        HomeController hc = new HomeController();
+        List<Movie> movieList = new ArrayList<Movie>();
+
+        Movie movie1 = new Movie("Anastasia", "blah one", Arrays.asList(Genre.DRAMA, Genre.ACTION, Genre.THRILLER));
+        Movie movie2 = new Movie("Dingaling", "blah two", Arrays.asList(Genre.ACTION, Genre.THRILLER));
+        Movie movie3 = new Movie("Zimmbabwe", "blah three", Arrays.asList(Genre.THRILLER));
+        movieList.addAll(Arrays.asList(movie1, movie2, movie3));
+
+        // Test the searchMovies function with keyword "blah"
+        List<Movie> result = hc.searchMovies(movieList, null);
+
+        List<Movie> expected = new ArrayList<>();
+        expected.addAll(Arrays.asList(movie1, movie2, movie3));
+
+        assertEquals(expected, result, "Search in description does not work");
+    }
+    @Test
+    public void search_for_keyword_in_title_and_description() {
+        HomeController hc = new HomeController();
+        List<Movie> movieList = new ArrayList<Movie>();
+
+        Movie movie1 = new Movie("Anastasia", "blah one", Arrays.asList(Genre.DRAMA, Genre.ACTION, Genre.THRILLER));
+        Movie movie2 = new Movie("Dingaling", "blah two", Arrays.asList(Genre.ACTION, Genre.THRILLER));
+        Movie movie3 = new Movie("Glass Onion", "blah three", Arrays.asList(Genre.THRILLER));
+        movieList.addAll(Arrays.asList(movie1, movie2, movie3));
+
+        // Test the searchMovies function with keyword "on"
+        List<Movie> result = hc.searchMovies(movieList, "on");
+
+        List<Movie> expected = new ArrayList<>();
+        expected.addAll(Arrays.asList(movie1, movie2, movie3));
+
+        assertEquals(expected, result, "Search in title and description does not work");
+    }
 
 //did we test configuration settings when testing different possibilities?
 }
