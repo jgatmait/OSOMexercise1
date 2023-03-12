@@ -136,7 +136,8 @@ public class HomeController implements Initializable {
     public List<Movie> searchMovies(List<Movie> movieList, String keyword) {
         List<Movie> result = new ArrayList<>();
         for (Movie movie : movieList) {
-            if (movie.getTitle().toLowerCase().contains(keyword.toLowerCase()) || movie.getDescription().toLowerCase().contains(keyword.toLowerCase())) {
+            if (movie.getTitle().toLowerCase().contains(keyword.toLowerCase()) ||
+                    movie.getDescription().toLowerCase().contains(keyword.toLowerCase())) {
                 result.add(movie);
             }
         }
