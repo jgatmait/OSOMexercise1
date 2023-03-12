@@ -20,25 +20,18 @@ import java.util.List;
 public class HomeController implements Initializable {
     @FXML
     public JFXButton searchBtn;
-
     @FXML
     public TextField searchField;
-
     @FXML
     public JFXListView movieListView;
-
     @FXML
     public JFXComboBox genreComboBox;
-
     @FXML
     public JFXButton sortBtn;
-
     public static List<Movie> allMovies = Movie.initializeMovies();
 
     private final ObservableList<Movie> observableMovies = FXCollections.observableArrayList();
     // automatically updates corresponding UI elements when underlying data changes
-
-   // observableMovies.addAll(allMovies);         // add dummy data to observable list
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -52,7 +45,6 @@ public class HomeController implements Initializable {
         genreComboBox.setPromptText("Filter by Genre");
       //  genreComboBox.getItems().add("SHOW ALL GENRES");
         genreComboBox.getItems().addAll(Genre.values());
-
 
         // TODO add event handlers to buttons and call the regarding methods
         // either set event handlers in the fxml file (onAction) or add them here
@@ -77,32 +69,14 @@ public class HomeController implements Initializable {
             }else {
                 filterGenre=Genre.SHOW_ALL;
             }
-
             observableMovies.clear();
             observableMovies.addAll(filterMoviesByGenre(allMovies, filterGenre));
+
             String key = searchField.getText();
             List<Movie> searchedMovies = searchMovies(observableMovies, key);
             observableMovies.clear();
             observableMovies.addAll(searchedMovies);
         });
-
-/*
-        searchBtn.setOnAction(actionEvent -> {
-            String searchText = searchBtn.getText();               // 11.03.23 https://jenkov.com/tutorials/javafx/combobox.html
-            Object selectedItem = genreComboBox.getValue(); // 11.03.23 https://jenkov.com/tutorials/javafx/combobox.html
-            //    JFXComboBox cb = (JFXComboBox)source;
-            //    Object selectedItem = cb.getSelectedItem(); // 11.03.23 https://stackoverflow.com/questions/32752072/jcombobox-and-itemlistener-actionlistener
-       /*
-            if(searchText.equals("Movie in List")) { //TODO: welche movies haben den gesuchten begriff? copy in zwischenliste
-                // TODO show liste movies die gesuchten begriff enthalten (zwischenliste überschreibt observable
-
-            } else if (searchBtn.getText().equals("Movie in List")){
-                // TODO : Text "No Movies found - please refine your search"
-            // WICHTIG!!! TODO: was ist wenn searchfield leer?
-        }
-
-        });
-*/
     }
 
     public void sortMovieList(List<Movie> movieList, boolean ascending){
@@ -112,7 +86,6 @@ public class HomeController implements Initializable {
                 movieList.sort(Comparator.comparing(Movie::getTitle).reversed());
             }
     }
-
 
     public static ObservableList<Movie> filterMoviesByGenre(List<Movie> allMovies, Genre filterGenre){
         ObservableList<Movie> filteredList = FXCollections.observableArrayList();
@@ -131,7 +104,6 @@ public class HomeController implements Initializable {
             filteredList.addAll(allMovies);
         }
         return filteredList;
-
     }
     public List<Movie> searchMovies(List<Movie> movieList, String keyword) {
         List<Movie> result = new ArrayList<>();
