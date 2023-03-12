@@ -9,11 +9,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import java.net.URL;
-import java.util.*;
-import at.ac.fhcampuswien.fhmdb.HomeController;
-
-class HomeControllerTest {
+public class HomeControllerTest {
 
 
 

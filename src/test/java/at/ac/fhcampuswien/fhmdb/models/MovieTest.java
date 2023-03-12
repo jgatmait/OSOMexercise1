@@ -1,6 +1,5 @@
 package at.ac.fhcampuswien.fhmdb.models;
 
-import at.ac.fhcampuswien.fhmdb.HomeController;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MovieTest {
+public class MovieTest {
 
     @Test
     void initializeMovies_is_List_not_empty(){
