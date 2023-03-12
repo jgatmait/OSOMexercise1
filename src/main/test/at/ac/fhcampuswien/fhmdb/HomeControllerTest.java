@@ -4,11 +4,29 @@ import at.ac.fhcampuswien.fhmdb.models.Movie;
 import at.ac.fhcampuswien.fhmdb.models.Genre;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import java.net.URL;
 import java.util.*;
 import at.ac.fhcampuswien.fhmdb.HomeController;
 
 
 class HomeControllerTest {
+
+
+
+
+    @Test
+    void does_List_of_movies_exist() {
+        List<Movie> actual = HomeController.allMovies;
+        assertTrue(!actual.isEmpty());
+    }
+   /*
+   @Test
+   void does_oberservable_List_of_movies_exist() {
+        HomeController hc=new HomeController();
+        List<Movie> actual = hc.initialize(, null);
+        assertTrue(!actual.isEmpty());
+    }*/
 
     @Test
     public void sort_movies_by_titles_ascending() {
@@ -27,7 +45,6 @@ class HomeControllerTest {
         assertEquals("Dingaling", movieList.get(2).getTitle());
         assertEquals("Zimmbabwe", movieList.get(3).getTitle());
     }
-
     @Test
     public void sort_movies_by_titles_descending() {
 
@@ -62,7 +79,7 @@ class HomeControllerTest {
         List<Movie> expected = new ArrayList<>();
         Collections.addAll(expected, movie1,movie2,movie3,movie4,movie5);
 
-        List<Movie> actual = hc.filterMoviesByGenre(movieList, Genre.SHOW_ALL_GENRES);
+        List<Movie> actual = hc.filterMoviesByGenre(movieList, Genre.SHOW_ALL);
 
         assertEquals(expected, actual, "Not all Movies shown!");
     }
@@ -103,7 +120,6 @@ class HomeControllerTest {
 
         assertEquals(expected, actual, "Movie with no genre should also be shown");
     }
-
     @Test
     void filter_movies_by_genre_only_two_movies_have_genre_not_all() {
         HomeController hc = new HomeController();
@@ -122,7 +138,6 @@ class HomeControllerTest {
 
         assertEquals(expected, actual, "Not all movies with selected genre shown - 2 movies");
     }
-
     @Test
     void filter_movies_by_genre_all_movies_have_genre() {
         HomeController hc = new HomeController();
@@ -142,9 +157,8 @@ class HomeControllerTest {
 
         assertEquals(expected, actual, "Not all movies with selected genre shown - all movies");
     }
-
     @Test
-    void filter_movies_by_genre_only_one_movie_has_that_genre() {
+    void filter_movies_by_genre_no_genre_selected() {
         HomeController hc = new HomeController();
         List<Movie> movieList = new ArrayList<>();
 
@@ -156,16 +170,12 @@ class HomeControllerTest {
         Collections.addAll(movieList, movie1,movie2,movie3,movie4, movie5);
 
         List<Movie> expected = new ArrayList<>();
-        Collections.addAll(expected, movie4, movie3);
+        Collections.addAll(expected,movie1,movie2,movie3,movie4,movie5);
 
-        List<Movie> actual = hc.filterMoviesByGenre(movieList, Genre.FANTASY);
+        List<Movie> actual = hc.filterMoviesByGenre(movieList, null);
 
-        assertEquals(expected, actual,"Not all movies with selected genre shown - 1 movie");
+        assertEquals(expected, actual,"No selection should show all movies");
     }
 
-    @Test
-    void filter_movies_by_genre_no_genre_selected() {}
-    //hier problem dass Filter in initialize:searchBtn - abhängig von Eingabe - gesetzt wird, also kann ich nicht hier testen
-
-//did I test configuration settings when testing different possibilities?
+//did we test configuration settings when testing different possibilities?
 }

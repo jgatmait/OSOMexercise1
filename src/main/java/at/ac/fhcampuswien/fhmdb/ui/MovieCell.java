@@ -12,7 +12,6 @@ import javafx.scene.paint.Color;
 public class MovieCell extends ListCell<Movie> {
     private final Label title = new Label();
     private final Label detail = new Label();
-
     private final Label footnote = new Label();
     private final VBox layout = new VBox(title, detail, footnote);
 
@@ -27,12 +26,12 @@ public class MovieCell extends ListCell<Movie> {
             this.getStyleClass().add("movie-cell");
             title.setText(movie.getTitle());
             detail.setText(
-                    movie.getDescription() != null
+                    movie.getDescription() != ""
                             ? movie.getDescription()
                             : "No description available"
             );
             footnote.setText(
-                    movie.getGenre() != null
+                    !movie.getGenre().isEmpty()
                             ? movie.getGenre().toString().replace("[","").replace("]", "")
                             : "No genres available"
             );

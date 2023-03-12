@@ -75,7 +75,7 @@ public class HomeController implements Initializable {
             if (genreComboBox.getValue()!=null) {
                 filterGenre = (Genre) genreComboBox.getValue();
             }else {
-                filterGenre=Genre.SHOW_ALL_GENRES;
+                filterGenre=Genre.SHOW_ALL;
             }
 
             observableMovies.clear();
@@ -126,7 +126,7 @@ public class HomeController implements Initializable {
                 filteredList.add(movie);
             }
         }
-        if (filterGenre.equals(Genre.SHOW_ALL_GENRES)){
+        if (filterGenre.equals(Genre.SHOW_ALL)){
             filteredList.clear();
             filteredList.addAll(allMovies);
         }

@@ -19,16 +19,30 @@ public class Movie {
     public String getTitle() {
         return title;
     }
+   /* public void setTitle(String title) {this.title=title;}
+    public void setDescription(String description) {this.description=description;}
+    public void setGenres(Genre newGenre) {this.genres.add(newGenre);}
+*/
 
     public String getDescription() {
         return description;
     }
-
     public List<Genre> getGenre(){
-        //System.out.println(this.getTitle() + " " + genres);
         Collections.sort(genres);
         return genres;
     }
+
+
+  /*  public List<Genre> getGenre(){
+        try {
+            Collections.sort(genres);
+        }catch (NullPointerException e){
+            if (genres==null){
+                this.setGenres(Genre.SHOW_ALL);
+            }
+        }
+        return genres;
+    }*/
 
    // public void addGenre(Genre g){
    //     genres.add(g);
@@ -94,7 +108,7 @@ public class Movie {
 
         Movie movie13 = new Movie("Greatest Showman",
                 "No one ever made a difference by being like everyone else.",
-                Arrays.asList(  ));//Genre.BIOGRAPHY, Genre.MUSICAL, Genre.DRAMA));
+                Arrays.asList( ));//Genre.BIOGRAPHY, Genre.MUSICAL, Genre.DRAMA));
 
         Movie movie14 = new Movie("Coach Carter",
                 "",
@@ -147,6 +161,7 @@ public class Movie {
 
         return movies;
     }
+
 /*
     @Override
     public boolean equals(Object obj) {
@@ -156,4 +171,5 @@ public class Movie {
             return false;
         }
     }*/
+
 }
