@@ -22,7 +22,7 @@ public class MovieCell extends ListCell<Movie> {
 
         if (empty || movie == null) {
             setText(null);
-            setGraphic(null); // Tipp vom Kollegen Hamza Ahmad 11.3.23
+            setGraphic(null); // Tipp von Manu im Discord-Forum 10.03.23
         } else {
             this.getStyleClass().add("movie-cell");
             title.setText(movie.getTitle());

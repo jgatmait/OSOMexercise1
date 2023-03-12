@@ -34,9 +34,6 @@ public class Movie {
    //     genres.add(g);
    // } - durch die Lösung aus dem Turorium vom 24.02.23 wurde die methode unnötig
 
-
-
-
     public static List<Movie> initializeMovies(){
         List<Movie> movies = new ArrayList<>();
         // TODO add some dummy data here
@@ -89,7 +86,7 @@ public class Movie {
 
         Movie movie11 = new Movie("The Revenant",
                 "I'm not afraid to die anymore",
-                Arrays.asList(Genre.WESTERN, Genre.THRILLER,Genre.ADVENTURE));
+                Arrays.asList(Genre.THRILLER,Genre.ADVENTURE)); //Genre.WESTERN,
 
         Movie movie12 = new Movie("Schindler's List",
                 "Power is when we have every justification to kill, and we don't.",
@@ -97,7 +94,7 @@ public class Movie {
 
         Movie movie13 = new Movie("Greatest Showman",
                 "No one ever made a difference by being like everyone else.",
-                Arrays.asList(Genre.BIOGRAPHY, Genre.MUSICAL, Genre.DRAMA));
+                Arrays.asList(  ));//Genre.BIOGRAPHY, Genre.MUSICAL, Genre.DRAMA));
 
         Movie movie14 = new Movie("Coach Carter",
                 "",
@@ -150,7 +147,7 @@ public class Movie {
 
         return movies;
     }
-
+/*
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Movie mov){
@@ -158,7 +155,5 @@ public class Movie {
         }else {
             return false;
         }
-    }
-
-
+    }*/
 }
