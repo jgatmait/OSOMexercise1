@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.*;
+import java.util.List;
 
 public class HomeController implements Initializable {
     @FXML
@@ -71,7 +72,6 @@ public class HomeController implements Initializable {
 
         searchBtn.setOnAction(actionEvent -> {
             Genre filterGenre;
-
             if (genreComboBox.getValue()!=null) {
                 filterGenre = (Genre) genreComboBox.getValue();
             }else {
@@ -80,6 +80,10 @@ public class HomeController implements Initializable {
 
             observableMovies.clear();
             observableMovies.addAll(filterMoviesByGenre(allMovies, filterGenre));
+            String key = searchField.getText();
+            List<Movie> searchedMovies = searchMovies(observableMovies, key);
+            observableMovies.clear();
+            observableMovies.addAll(searchedMovies);
         });
 
 /*
@@ -110,8 +114,8 @@ public class HomeController implements Initializable {
     }
 
 
-    public static List<Movie> filterMoviesByGenre(List<Movie> allMovies, Genre filterGenre){
-        List<Movie> filteredList = new ArrayList<>();
+    public static ObservableList<Movie> filterMoviesByGenre(List<Movie> allMovies, Genre filterGenre){
+        ObservableList<Movie> filteredList = FXCollections.observableArrayList();
         for (Movie movie: allMovies){
             if (movie.getGenre().contains(filterGenre)){
                 filteredList.add(movie);
@@ -127,8 +131,16 @@ public class HomeController implements Initializable {
             filteredList.addAll(allMovies);
         }
         return filteredList;
+
     }
-
-
+    public List<Movie> searchMovies(List<Movie> movieList, String keyword) {
+        List<Movie> result = new ArrayList<>();
+        for (Movie movie : movieList) {
+            if (movie.getTitle().toLowerCase().contains(keyword.toLowerCase()) || movie.getDescription().toLowerCase().contains(keyword.toLowerCase())) {
+                result.add(movie);
+            }
+        }
+        return result;
+    }
 
 }
